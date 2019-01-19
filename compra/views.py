@@ -10,9 +10,4 @@ class CompraViewSet(viewsets.ModelViewSet):
     queryset = Compra.objects.all()
     serializer_class = CompraSerializer
 
-    # def create(self, validated_data):
-    #     compra = validated_data.get('produtos')
-    #     print("@@@@@@@@@@@@")
-    #     print(compra)
-    #     return super().create(request)
 
