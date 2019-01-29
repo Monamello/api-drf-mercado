@@ -11,4 +11,4 @@ class CompraViewSet(viewsets.ModelViewSet):
     serializer_class = CompraSerializer
 
     def get_queryset(self):
-        return Compra.objects.filter(cliente=self.request.user) 
+        return Compra.objects.filter(cliente=self.request.user)

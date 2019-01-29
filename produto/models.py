@@ -1,5 +1,4 @@
 from django.db import models
-from compra.models import Compra
 
 class Produto(models.Model):
     nome = models.CharField(max_length=200)

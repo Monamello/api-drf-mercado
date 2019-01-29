@@ -5,4 +5,4 @@ from rest_framework import serializers
 class ProdutoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Produto
-        fields = ('nome', 'estoque',)
+        fields = ('nome', 'estoque', )

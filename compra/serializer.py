@@ -3,16 +3,20 @@ from produto.models import Produto
 from .models import Compra, Item
 
 
+class ItemSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Item
+        fields = '__all__'
+
+
 class CompraSerializer(serializers.ModelSerializer):
-    items = serializers.SlugRelatedField(
-        many=True,
-        slug_field='nome',
-        queryset=Item.objects.filter()
-     )
+    items = ItemSerializer(many=True)
+
 
     class Meta:
         model = Compra
-        fields = '__all__'
+        fields = ['cliente', 'items']
 
     def create(self, validated_data):
         # produtos = validated_data.get('produtos')
