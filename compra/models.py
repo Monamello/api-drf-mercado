@@ -8,6 +8,7 @@ class Compra(models.Model):
 
 
 class Item(models.Model):
-    compra = models.ForeignKey('compra.Compra', related_name='items', on_delete=models.CASCADE)
+    compra = models.ForeignKey('compra.Compra', related_name='items', 
+                                on_delete=models.CASCADE, blank=True, null=True)
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     quantidade = models.IntegerField()

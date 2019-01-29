@@ -7,7 +7,7 @@ class ItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Item
-        fields = '__all__'
+        exclude = ('compra',)
 
 
 class CompraSerializer(serializers.ModelSerializer):
@@ -19,17 +19,8 @@ class CompraSerializer(serializers.ModelSerializer):
         fields = ['cliente', 'items']
 
     def create(self, validated_data):
-        # produtos = validated_data.get('produtos')
-        # quantidade = validated_data.get('quantidade')
-
-        # for produto in produtos:
-        #     if not quantidade > produto.estoque:
-        #         produto.estoque -= quantidade
-        #         produto.save()
-        #         print(produto.estoque)
-        #     else:
-        #         message = 'Quantidade do produto não tem em estoque!'
-        #         raise serializers.ValidationError(message)
-
-            
-        return super(CompraSerializer, self).create(validated_data)
+        items_data = validated_data.pop('items')
+        compra = Compra.objects.create(**validated_data)
+        for item_data in items_data:
+            Item.objects.create(compra=compra, **item_data)
+        return compra
