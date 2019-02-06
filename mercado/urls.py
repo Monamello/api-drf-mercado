@@ -17,7 +17,7 @@ router.register(r'compras', CompraViewSet, 'compras')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/compras/', UserCompraViewSet.as_view({'get': 'list'}), name='users-compra'),
     path('', include(router.urls)),
-    path('users/ativos', UserCompraViewSet.as_view({'get': 'list'})),
     path('', include('rest_framework.urls', namespace='rest_framework')),
 ]
