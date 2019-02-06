@@ -4,7 +4,7 @@ from produto.models import Produto
 
 
 class Compra(models.Model):
-    cliente = models.ForeignKey(User, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(User, on_delete=models.CASCADE, related_name='compras')
 
 
 class Item(models.Model):
